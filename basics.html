@@ -48,23 +48,19 @@
     </aside>
 
     <section class="main-content" role="main">
-      <h3 id="overview">Overview</h3>
+      <h3 id="api-basics">API basics</h3>
 
-<p>Developed in partnership with museums, TMS makes capturing, managing and accessing collection information quick and easy.</p>
+<p>The eMuseum API is tested using Firefox 22 (the files are best viewed in Firefox with JSON View 0.7). No additional software was needed to test this upgrade.</p>
 
-<p>eMuseum is a web-based software program that integrates seamlessly with TMS and other collection management systems to dynamically publish information to your website, Intranet, and kiosks.
-The GSA.gov API delivers search information and images from TMS &amp; eMuseum to GSA.gov.</p>
+<p>The tables returning calls to this API are read-only tables and have no data other than what is chosen by the GSA business line for display.</p>
 
-<h5 id="get-started">Get started</h5>
+<p>The eMuseum API conducts searches based on individualized query parameters run against the eMuseum schema of the Oracle TMS database.  </p>
 
-<p>The eMuseum API is tested with a Firefox browser with JSONView 0.7 installed in Firefox.  A series of calls are pasted into the address bar of the browser and search results display in the browser window.</p>
+<p>Query results are displayed in the browser (using Firefox with JSON View 0.7) window for eMuseum as text that will eventually be sent to the GSA.gov server(s) once they are configured to make these calls.  </p>
 
-<ul>
-  <li><a href="basics.html">API basics</a> introduces you to the API.</li>
-  <li><a href="console/">API calls</a> gives you a list of calls available in the API.</li>
-</ul>
+<p>Software tested is the eMuseum schema inside the TMS database and the eMuseum Webserver connection to the TMS database. Verify access to the eMuseum Webserver by pasting <serverurl> in a web browser.</serverurl></p>
 
-<body id="overview"></body>
+<body id="basics"></body>
 
     </section>
 

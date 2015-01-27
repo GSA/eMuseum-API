@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API calls</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link href="/static/css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/highlight.default.css" rel="stylesheet" type="text/css" media="screen"/>
+  <link href="css/screen.css" rel="stylesheet" type="text/css" media="screen" />
+  <link href="/static/css/style.css" rel="stylesheet" type="text/css"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--[if IE]>
+  <link href="/static/css/for-ie-only.css" rel="stylesheet" >
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="lib/shred.bundle.js" /></script>  
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-1.0.0.js' type='text/javascript'></script>
+  <script src='lib/underscore-min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='lib/swagger.js' type='text/javascript'></script>
+  <script src='swagger-ui.js' type='text/javascript'></script>
+  <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
+  <script type="text/javascript">
+    $(function () {
+      window.swaggerUi = new SwaggerUi({
+      url: "/api-docs.json",
+      dom_id: "swagger-ui-container",
+      supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
+      onComplete: function(swaggerApi, swaggerUi){
+        if(console) {
+          console.log("Loaded SwaggerUI")
+        }
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+        $onload = Docs.toggleEndpointListForResource('data');
+        $onload = Docs.toggleEndpointListForResource('hmda');
+      },
+      onFailure: function(data) {
+        if(console) {
+          console.log("Unable to Load SwaggerUI");
+          console.log(data);
+        }
+      },
+      docExpansion: "none"
+    });
+
+    $('#input_apiKey').change(function() {
+      var key = $('#input_apiKey')[0].value;
+      console.log("key: " + key);
+      if(key && key.trim() != "") {
+        console.log("added key " + key);
+        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+      }
+    })
+    window.swaggerUi.load();
+  });
+  </script>
+</head>
+
+<body id="console">
+  <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MVLMCF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MVLMCF');</script>
+<!-- End Google Tag Manager -->
+  <header class="header cf" role="banner">
+      			<div class="wrap">
+
+			<!-- <h1><a href="" target="_blank"><span>Gallery Systems</span></a></h1> -->
+				
+            <a href="http://www.gallerysystems.com" target="_blank">
+				<img class="logo" src="/static/img/logo.jpg" alt="Gallery Systems logo">
+            </a>
+          
+        	</div>
+
+  </header>
+
+<div class="wrap">
+    <div class="content">
+
+    <aside>
+    
+<h1 class="page-title"><a href="/index.html">Gallery Systems <br>API docs</a></h1>
+      <p class="intro">Build your own tools using our API to access Gallery Systems public data.</p>
+    <nav>    
+        <ul>
+          <li><a href="/index.html" class="overview">Overview</a></li>
+          <li><a href="/basics.html" class="basics">API basics</a></li>
+          <li><a href="/console/" class="console">API calls</a></li>
+        </ul>
+    </nav>
+
+    </aside>
+
+    <section class="main-content" role="main">
+
+      <h3 id='api_calls'>API calls</h3>
+
+<p>Explore the API here. Need a little help? Read our <a href="../basics.html">API basics</a> to learn more.<br>
+<br>
+<strong>Template: Artist Index</strong> <br><br>
+Information required:<br>
+● Index (Letter of alphabet)<br>
+● Artist Last Name<br>
+● Artist First Name<br>
+● Artist ID (used to create link to Artist Overview page)<br><br>
+Sample API calls for this page<br>
+[ServerURL]/emuseum/api/search/people?Index=a&end=25  <br>
+[ServerURL]/emuseum/api/search/people?Index=a&start=25&end=50<br><br><br><br>
+
+<strong>Template: Artist Overview</strong><br><br>
+Information required: <br>
+● Artist First, Last<br>
+● Birth / Death Dates (displayDate)<br>
+● Biographical Info (see note below)<br>
+● List of Objects by the artist, each item to include:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object ID (used to create link to Art Detail page)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object Number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Primary Image Filename<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Title of Artwork<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Classification<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Display Date<br><br>
+
+Sample API calls:<br>
+[ServerURL]/emuseum/api/id/people/5616<br>
+[ServerURL]/emuseum/api/id/people/2333<br>
+[ServerURL]/emuseum/api/id/people/1862<br><br><br><br>
+
+<strong>Template: Artwork Detail</strong><br><br>
+Information required:<br>
+● Title<br>
+● Artist (first & last)<br>
+● Artist ID (used to create link to artist page)<br>
+● Year<br>
+● Medium<br>
+● Classification <br>
+● Object Number<br>
+● Dimensions<br>
+● Credit Line<br>
+● Copyright<br>
+● Primary image filename<br>
+● Location (Building Name, Building Address)<br>
+● Building ID (used to create link to building page)<br>
+● Description (expected textType=interpretation, see note below)  (ObjTextEntries)<br>
+● If there are additional images of this object, then a list of them is included 
+(ObjMedia).<br>
+Elements included that will be used are: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Non-Primary Filenames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object ID<br>
+● If there are additional objects by this Artist, then a list of them is included  
+(artistRelatedObjects).  Elements included that will be used are: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Primary Image Filenames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object ID (used to create link to the Artwork Detail page for that object)<br>
+● If the object is in a collection, then collection information is included:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Collection ID (used to link to collection)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Collection Name <br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ List of objects in the Collection including: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Primary Image Filename<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Object ID (to create links to the Artwork Detail pages of these Objects)<br><br>
+
+Sample API calls<br>
+[ServerURL]/emuseum/api/id/objects/23671<br>
+[ServerURL]/emuseum/api/id/objects/1111 <br>
+[ServerURL]/emuseum/api/id/objects/22688<br><br><br><br>
+
+<strong>Template: Collection Index</strong><br><br>
+Information required:<br>
+● Collection Title<br>
+● Short Collection Description<br>
+● Primary image filename for each Collection<br>
+● Collection ID (to create link to individual collections page)<br>
+
+Sample API call <br>
+[ServerURL]/emuseum/api/collections/all<br><br>
+
+<strong>Template: Individual Collection</strong><br><br>
+Information required:<br>
+● Long Description of Collection<br>
+● Title of Collection<br>
+● Listing of artwork in the collection, each including:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Title<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Artist Name (not Artist Last, First)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Display Year<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Primary Image Filename<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Classification<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object Number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object ID (to create link to Artwork Detail)<br><br>
+
+Sample API call <br>
+[ServerURL]/emuseum/api/collections/285<br><br><br><br>
+
+<strong>Template: Browse by Location/State</strong><br><br>
+Information required: <br>
+● State Name<br>
+● List of all federal and non-federal buildings that house GSA artwork in a particular State<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Building Name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Building ID (to create link to next page)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ City<br><br>
+
+Sample API calls<br>
+[ServerURL]/emuseum/api/search/buildings?State=IL<br>
+[ServerURL]/emuseum/api/search/buildings?State=DC<br><br><br><br>
+
+<strong>Template: Building Overview</strong><br><br>
+Information required:<br>
+● Building Name <br>
+● Building Address<br>
+● Primary Building Image Filename (Fed buildings only - expect to have these added by launch)<br>
+● List of Objects found at the building location, each item to include (SiteObjects)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object ID (used to create link to Art Detail page)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Object Number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Primary Image Filename<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Title of Artwork<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Classification<br>
+&nbsp;&nbsp;&nbsp;&nbsp;○ Display Date<br><br>
+
+
+Sample API calls<br>
+[ServerURL]/emuseum/api/id/buildings/538<br>
+[ServerURL]/emuseum/api/id/buildings/988<br><br><br><br>
+
+<strong>Template: Search Results for Artists</strong><br><br>
+Information required in results:<br>
+● Artist ID (used to create link to Artists Overview page)<br>
+● Artist Name<br>
+● Dates (for Keyword Search)<br><br>
+
+Sample API calls<br>
+[ServerURL]/emuseum/api/search/people?keyword=Robert<br>
+[ServerURL]/emuseum/api/search/people?keyword=Robert&end=1000<br>
+[ServerURL]/emuseum/api/search/people?Last%20Name=Robert<br>
+[ServerURL]/emuseum/api/search/people?First%20Name=Robert<br>
+[ServerURL]/emuseum/api/search/people?displayName=Robert<br>
+[ServerURL]/emuseum/api/search/people?keyword=Robert&start=5&end=10<br><br><br><br>
+
+<strong>Template: Search Results for Objects </strong><br><br>
+Multiple search fields allow visitors to focus a “Search for Artwork” with query terms input into separate fields for “By Artist”, “Keywords in Title”, and “Keywords in Artwork Information.” A checkbox allows results to be filtered to those with “Images Only.” When multiple terms are input, the system should first return results where all conditions apply (“AND”) followed by results where one or another apply (“OR”).<br><br>
+
+Information required in results:<br>
+● Object ID (used to create link to Artwork detail page)<br>
+● Title<br>
+● Object Number<br>
+● Artist ID (used to create link to Artists Overview page)<br>
+● Artist Name (first, last)<br>
+● Primary image filename<br>
+● Display Date<br>
+● Classification<br><br>
+
+API Calls Tested: <br>
+[ServerURL]/emuseum/api/search/objects?Title=Farm  (133 results)<br>
+[ServerURL]/emuseum/api/search/objects?keyword=Farm (98 results)<br>
+[ServerURL]/emuseum/api/search/objects?Title=Farm&end=200&start=100<br>
+[ServerURL]/emuseum/api/search/objects?keyword=calder<br>
+[ServerURL]/emuseum/api/search/objects?keyword=robert&end=1000<br>
+[ServerURL]/emuseum/api/search/objects?keyword=robertson&end=1000<br><br><br><br>
+
+<strong>Template: Search Results for Locations</strong> <br><br>
+A single search field allows visitors to “Search for Locations.” <br><br>
+
+Information required in results:<br>
+● Building ID (used to create link to Building  page)<br>
+● Building Name<br>
+● City<br>
+● State<br>
+<br>
+Sample API Calls: <br>
+[ServerURL]/emuseum/api/search/buildings?keyword=california<br>
+[ServerURL]/emuseum/api/search/buildings?keyword=diego<br>
+[ServerURL]/emuseum/api/search/buildings?keyword=Kluczynski<br><br><br><br>
+
+<strong>Template: Search Results for Classification</strong><br><br>
+Links allow visitors to browse the complete set of results for Drawings, Paintings, Prints, or Sculptures<br><br>
+
+Information required in results:<br>
+● Object ID (used to create link to Artwork detail page)<br>
+● Title<br>
+● Object Number<br>
+● Artist ID (used to create link to Artists Overview page)<br>
+● Artist Name (first, last)<br>
+● Primary image filename<br>
+● Display Date<br>
+● Classification<br><br>
+
+Sample API Calls: <br>
+[ServerURL]/emuseum/api/search/objects?Classification=painting<br>
+[ServerURL]/emuseum/api/search/objects?Classification=print&end=200<br><br><br><br>
+
+<strong>Template: Search Results for Classification</strong><br><br>
+Links allow visitors to browse the complete set of results for Drawings, Paintings, Prints, or Sculptures<br><br>
+
+Information required in results:<br>
+● Object ID (used to create link to Artwork detail page)<br>
+● Title<br>
+● Object Number<br>
+● Artist ID (used to create link to Artists Overview page)<br>
+● Artist Name (first, last)<br>
+● Primary image filename<br>
+● Display Date<br>
+● Classification<br><br>
+
+Sample API Calls: <br>
+[ServerURL]/emuseum/api/search/objects?Classification=painting<br>
+[ServerURL]/emuseum/api/search/objects?Classification=print&end=200<br><br><br>
+
+    </section>
+
+    </div>
+  </div> <!--wrap-->
+
+    <footer class="footer cf" role="contentinfo">
+      <div class="wrap">
+        
+            <section class="footer-oss">
+               <!--  <h4>Open source</h4>
+                <p>
+                    As a work of the United States Government, source code released by the Gallery Systems is in the public
+                    domain by default within the United States.
+                    <a href="">
+                        View our full source code policy.
+                    </a>
+                </p> -->
+            </section>
+
+
+            <section class="footer-links">
+                <ul>
+                    <li>
+                        <a href="http://www.gallerysystems.com">http://www.gallerysystems.com</a>
+                    </li>
+                    <li>
+                        <a href="mailto:info@gallerysystems.com">Contact us</a>
+                    </li>
+                </ul>
+            </section>
+      </div>
+    </footer>
+  <script src="/static/js/docs.min.js"></script>
+  <script type="text/javascript" src="/static/js/expandables.js"></script>
+</body>
+</html>
