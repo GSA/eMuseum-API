@@ -124,8 +124,8 @@ Information required:<br>
 ● Artist First Name<br>
 ● Artist ID (used to create link to Artist Overview page)<br><br>
 Sample API calls for this page<br>
-[ServerURL]/emuseum/api/search/people?Index=a&end=25  <br>
-[ServerURL]/emuseum/api/search/people?Index=a&start=25&end=50<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?Index=a&end=25&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?Index=a&start=25&end=50&api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Artist Overview</strong><br><br>
 Information required: <br>
@@ -141,9 +141,9 @@ Information required: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;○ Display Date<br><br>
 
 Sample API calls:<br>
-[ServerURL]/emuseum/api/id/people/5616<br>
-[ServerURL]/emuseum/api/id/people/2333<br>
-[ServerURL]/emuseum/api/id/people/1862<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/people/5616?api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/people/2333?api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/people/1862?api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Artwork Detail</strong><br><br>
 Information required:<br>
@@ -178,9 +178,9 @@ Elements included that will be used are: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Object ID (to create links to the Artwork Detail pages of these Objects)<br><br>
 
 Sample API calls<br>
-[ServerURL]/emuseum/api/id/objects/23671<br>
-[ServerURL]/emuseum/api/id/objects/1111 <br>
-[ServerURL]/emuseum/api/id/objects/22688<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/objects/2367?api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/objects/1111?api_key=DEMO_KEY <br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/objects/22688?api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Collection Index</strong><br><br>
 Information required:<br>
@@ -190,7 +190,7 @@ Information required:<br>
 ● Collection ID (to create link to individual collections page)<br>
 
 Sample API call <br>
-[ServerURL]/emuseum/api/collections/all<br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/collections/all<br><br>
 
 <strong>Template: Individual Collection</strong><br><br>
 Information required:<br>
@@ -206,7 +206,7 @@ Information required:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;○ Object ID (to create link to Artwork Detail)<br><br>
 
 Sample API call <br>
-[ServerURL]/emuseum/api/collections/285<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/collections/285<br><br><br><br>
 
 <strong>Template: Browse by Location/State</strong><br><br>
 Information required: <br>
@@ -217,8 +217,8 @@ Information required: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;○ City<br><br>
 
 Sample API calls<br>
-[ServerURL]/emuseum/api/search/buildings?State=IL<br>
-[ServerURL]/emuseum/api/search/buildings?State=DC<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/buildings?State=IL?api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/buildings?State=DC?api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Building Overview</strong><br><br>
 Information required:<br>
@@ -235,8 +235,8 @@ Information required:<br>
 
 
 Sample API calls<br>
-[ServerURL]/emuseum/api/id/buildings/538<br>
-[ServerURL]/emuseum/api/id/buildings/988<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/buildings/538?api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/id/buildings/988?api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Search Results for Artists</strong><br><br>
 Information required in results:<br>
@@ -245,12 +245,12 @@ Information required in results:<br>
 ● Dates (for Keyword Search)<br><br>
 
 Sample API calls<br>
-[ServerURL]/emuseum/api/search/people?keyword=Robert<br>
-[ServerURL]/emuseum/api/search/people?keyword=Robert&end=1000<br>
-[ServerURL]/emuseum/api/search/people?Last%20Name=Robert<br>
-[ServerURL]/emuseum/api/search/people?First%20Name=Robert<br>
-[ServerURL]/emuseum/api/search/people?displayName=Robert<br>
-[ServerURL]/emuseum/api/search/people?keyword=Robert&start=5&end=10<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?keyword=Robert&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?keyword=Robert&end=1000&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?Last%20Name=Robert&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?First%20Name=Robert&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?displayName=Robert&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/people?keyword=Robert&start=5&end=10&api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Search Results for Objects </strong><br><br>
 Multiple search fields allow visitors to focus a “Search for Artwork” with query terms input into separate fields for “By Artist”, “Keywords in Title”, and “Keywords in Artwork Information.” A checkbox allows results to be filtered to those with “Images Only.” When multiple terms are input, the system should first return results where all conditions apply (“AND”) followed by results where one or another apply (“OR”).<br><br>
@@ -266,12 +266,12 @@ Information required in results:<br>
 ● Classification<br><br>
 
 API Calls Tested: <br>
-[ServerURL]/emuseum/api/search/objects?Title=Farm  (133 results)<br>
-[ServerURL]/emuseum/api/search/objects?keyword=Farm (98 results)<br>
-[ServerURL]/emuseum/api/search/objects?Title=Farm&end=200&start=100<br>
-[ServerURL]/emuseum/api/search/objects?keyword=calder<br>
-[ServerURL]/emuseum/api/search/objects?keyword=robert&end=1000<br>
-[ServerURL]/emuseum/api/search/objects?keyword=robertson&end=1000<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Title=Farm&api_key=DEMO_KEY  (133 results)<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?keyword=Farm&api_key=DEMO_KEY (98 results)<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Title=Farm&end=200&start=100&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?keyword=calder&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?keyword=robert&end=1000&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?keyword=robertson&end=1000&api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Search Results for Locations</strong> <br><br>
 A single search field allows visitors to “Search for Locations.” <br><br>
@@ -283,9 +283,9 @@ Information required in results:<br>
 ● State<br>
 <br>
 Sample API Calls: <br>
-[ServerURL]/emuseum/api/search/buildings?keyword=california<br>
-[ServerURL]/emuseum/api/search/buildings?keyword=diego<br>
-[ServerURL]/emuseum/api/search/buildings?keyword=Kluczynski<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/buildings?keyword=california&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/buildings?keyword=diego&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/buildings?keyword=Kluczynski&api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Search Results for Classification</strong><br><br>
 Links allow visitors to browse the complete set of results for Drawings, Paintings, Prints, or Sculptures<br><br>
@@ -301,8 +301,8 @@ Information required in results:<br>
 ● Classification<br><br>
 
 Sample API Calls: <br>
-[ServerURL]/emuseum/api/search/objects?Classification=painting<br>
-[ServerURL]/emuseum/api/search/objects?Classification=print&end=200<br><br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Classification=painting&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Classification=print&end=200&api_key=DEMO_KEY<br><br><br><br>
 
 <strong>Template: Search Results for Classification</strong><br><br>
 Links allow visitors to browse the complete set of results for Drawings, Paintings, Prints, or Sculptures<br><br>
@@ -318,8 +318,8 @@ Information required in results:<br>
 ● Classification<br><br>
 
 Sample API Calls: <br>
-[ServerURL]/emuseum/api/search/objects?Classification=painting<br>
-[ServerURL]/emuseum/api/search/objects?Classification=print&end=200<br><br><br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Classification=painting&api_key=DEMO_KEY<br>
+https://api.gsa.gov/real_estate/emuseum/v1/search/objects?Classification=print&end=200&api_key=DEMO_KEY<br><br><br>
 
     </section>
 
