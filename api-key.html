@@ -42,7 +42,7 @@
           <li><a href="index.html" class="overview">Overview</a></li>
           <li><a href="basics.html" class="basics">API basics</a></li>
           <li><a href="console/" class="console">API calls</a></li>
-          <li><a href="api-key.html" class="api-key">API Key</a></li>
+          <li><a href="api-key.html" class="console">API Key</a></li>
           <li><a href="https://github.com/GSA/eMuseum-API/issues" class="feedback" target="_blank">Feedback</a></li>
         </ul>
     </nav>
@@ -50,19 +50,32 @@
     </aside>
 
     <section class="main-content" role="main">
-      <h3 id="api-basics">API basics</h3>
+      <h3 id="api-key">API Key Signup</h3>
 
-<p>The eMuseum API is tested using Firefox 22 (the files are best viewed in Firefox with JSON View 0.7). No additional software was needed to test this upgrade.</p>
 
-<p>The tables that are returning calls to this API are read-only tables and have no data other than what is chosen by the GSA business line for display.</p>
 
-<p>The eMuseum API conducts searches based on individualized query parameters run against the eMuseum schema of the Oracle TMS database.  </p>
+<div id="apidatagov_signup">Loading signup form...</div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var apiUmbrellaSignupOptions = {
+    registrationSource: 'gsa-emuseum',
+    apiKey: '0aYAx2eY37dkfjqsrrZ53SSCkY1yY2kRYGvY27rv',
+    exampleApiUrl: 'https://api.gsa.gov/real_estate/emuseum/v1/search/people?Index=a&end=25&api_key={{api_key}}'
+  };
 
-<p>Query results are displayed in the browser (using Firefox with JSON View 0.7) window for eMuseum as text that will eventually be sent to the GSA.gov server(s) once they are configured to make these calls.  </p>
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var apiUmbrella = document.createElement('script'); apiUmbrella.type = 'text/javascript'; apiUmbrella.async = true;
+    apiUmbrella.src = 'https://api.data.gov/static/javascripts/signup_embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(apiUmbrella);
+  })();
+</script>
+<noscript>Please enable JavaScript to signup for an <a href="http://api.data.gov/">api.data.gov</a> API key.</noscript>
 
-<p>Software tested is the eMuseum schema inside the TMS database and the eMuseum Webserver connection to the TMS database. Verify access to the eMuseum Webserver by pasting <serverurl> in a web browser.</serverurl></p>
 
-<body id="basics"></body>
+
+
+<body id="api-key"></body>
 
     </section>
 
